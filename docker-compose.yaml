@@ -1,0 +1,34 @@
+# services:
+#   db:
+#     image: postgres:latest
+#     container_name: database_container
+#     environment:
+#       - POSTGRES_USER=admin
+#       - POSTGRES_PASSWORD=adminpass
+#       - POSTGRES_DB=careerhub
+#     ports:
+#       - "1543:5432"
+#     restart: always 
+
+#   backend:
+#     container_name: backend
+#     build: ./backend
+#     image: node:14
+#     env_file:
+#       - ./backend/.env
+#     ports:
+#       - "3001:3001"
+
+#     depends_on:
+#       - db
+
+#   frontend:
+#     container_name: frontend
+#     build: ./frontend
+#     env_file:
+#       - ./frontend/.env.local
+#     ports:
+#       - "3000:3000"
+
+#     depends_on:
+#       - backend
