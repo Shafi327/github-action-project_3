@@ -8,7 +8,6 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -16,13 +15,23 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "18"  # Use the latest LTS version if needed
+          node-version: 22  # Use the latest LTS version
 
-      - name: Install dependencies
+      # ✅ Install dependencies for backend
+      - name: Install backend dependencies
         run: npm install
+        working-directory: backend
 
-      # - name: Build project
+      # ✅ Install dependencies for frontend
+      - name: Install frontend dependencies
+        run: npm install
+        working-directory: frontend
+
+      # ✅ Build frontend
+      # - name: Build frontend
       #   run: npm run build
+      #   working-directory: frontend
+
 
       - name: Debug - Verify build output
         run: |
