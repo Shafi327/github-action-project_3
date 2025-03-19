@@ -1,0 +1,29 @@
+version: "3.8"
+
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    environment:
+      - NODE_ENV=production
+
+  backend:
+    image: your-backend-image
+    ports:
+      - "4000:4000"
+    environment:
+      - NODE_ENV=production
+
+  database:
+    image: your-database-image
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=youruser
+      - POSTGRES_PASSWORD=yourpassword
+      - POSTGRES_DB=yourdb
